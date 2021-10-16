@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  | Login
+{% endblock %}
+
+{% block content %}
+  <h2 class="display-4 mb-4">Log In</h2>
+  <form method="post" style="width: 500px;">
+    {% if form.non_field_errors %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {% for error in form.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endif %}
+
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label }}
+      {% render_field field class="form-control" %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+  </form>
+{% endblock %}

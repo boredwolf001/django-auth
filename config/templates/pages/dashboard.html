@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    | Dashboard
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-4 text-lg mt-4">Welcome, {{ name }}</h1>
+
+    <a href="/accounts/logout" class="mt-4 btn btn-dark">Logout</a>
+{% endblock %}
